@@ -11,6 +11,7 @@ package.loadlib("LuaSmartCardLibrary.dll", "luaopen_luasql_odbc")()
 local msg = log.open_logfile("log\\log_dump.txt")
 print("msg = " .. msg)
 
+
 card = pcsc_card
 sam = pcsc_sam
 
