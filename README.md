@@ -14,7 +14,7 @@ Based on:
 # Installations
 1. Download all the files
 2. Open with visual studio (VS Community 2015)
-3. Compile against Lua V5.3 and openssl
+3. Compile dynamically against Lua V5.3 and openssl. (Compile lua5.3 and openSSL as DLL first) to avoid multiple VM Errors!
 4. Copy the DLL to ZeroBrane\bin, the same folder with Lua53.dll
 5. enjoy
 
