@@ -1,12 +1,15 @@
 # LuaSmartCardLibrary
 Smart Card Library for LUA
 
-This is a quick hack for development/scripting smartcard based on lua
+This is a quick hack for development/scripting smartcard based on lua, user friendly debugging with ZeroBrane or others
 
 Based on:
 1. CardPeek
+
 2. Smart Card Digging Utilities,PC/SC Wrappers (Ilya O. Levin, http://www.literatecode.com)
+
 3. Others
+
 
 # Installations
 1. Download all the files
