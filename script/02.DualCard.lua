@@ -8,7 +8,7 @@ package.loadlib("LuaSmartCardLibrary.dll", "luaopen_crypto")()
 package.loadlib("LuaSmartCardLibrary.dll", "luaopen_luasql_odbc")()
 
 --the place to save or log
-local msg = log.open_logfile("log\\log_dump.txt")
+local msg = log.open_logfile("log\\log_dump.txt", 5)
 print("msg = " .. msg)
 
 
@@ -20,7 +20,7 @@ sam = pcsc_sam
 -- FUNCTIONS
 -----------------------------------------------
 
-function verify_sw(recv_sw, ref_sw) 
+function verify_sw(recv_sw, ref_sw)
   if (recv_sw ~= ref_sw) then
     card.disconnect_reader()
     error("Received " .. string.format("sw = %x", recv_sw) .. " Expect " .. string.format("sw = %x", ref_sw))

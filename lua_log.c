@@ -36,10 +36,16 @@ int luaopen_log(lua_State* L)
 
 int lua_open_log_file(lua_State* L)
 {
-	const char *log_filename = luaL_checkstring(L, 1);
 	char *msg[512];
+	int debug_level = 5;
 
-	log_open_file(log_filename, msg);	
+	const char *log_filename = luaL_checkstring(L, 1);
+
+	if (lua_gettop(L) == 2) {		
+		debug_level = luaL_checkinteger(L, 2);
+	}
+
+	log_open_file(log_filename, msg, debug_level);
 
 	lua_pushstring(L, msg);
 
