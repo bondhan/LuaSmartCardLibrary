@@ -3,9 +3,11 @@ Smart Card Library for LUA
 
 This is a quick hack for development/scripting smartcard based on lua, user friendly debugging with ZeroBrane or others
 
-Based on:
+#Based on:
 1. CardPeek
+
 2. Smart Card Digging Utilities,PC/SC Wrappers (Ilya O. Levin, http://www.literatecode.com)
+
 3. Others, see the header of each files
 
 # Compiling from source code
@@ -15,7 +17,8 @@ Based on:
 4. Copy the DLL to ZeroBrane\bin, the same folder with Lua53.dll
 5. enjoy (see Manual)
 
-#Manual: Quick and brief https://github.com/bondhan/LuaSmartCardLibrary/manual/lua_smartcard.pdf
+#Manual: 
+Quick and brief https://github.com/bondhan/LuaSmartCardLibrary/manual/lua_smartcard.pdf
 
 # SCRIPTS
 Scripts can be found in folder scripts
