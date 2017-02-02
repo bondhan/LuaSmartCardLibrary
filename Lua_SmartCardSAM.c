@@ -19,6 +19,8 @@ The rule for smartcard sending and receiving is that all
 
 	Therefore all output of cards command are string hex
 */
+
+
 static const struct luaL_Reg pcsc_samlib[] =
 {
 	{ "list_readers", lua_listreaders_sam },
@@ -260,7 +262,7 @@ int send_apdu_sam(lua_State *L, const bytestring_t *command, bytestring_t *resul
 	}
 		
 	tmp = bytestring_to_format("%D", command);
-	log_printf(LOG_INFO, "TERM->SAM: %s [%s]", tmp, iso7816_stringify_apdu_class(ad.apdu_class));		
+	log_printf(LOG_INFO, "send: %s [%s]", tmp, iso7816_stringify_apdu_class(ad.apdu_class));		
 	free(tmp);
 
 	SW = pcsc_transmit(reader, command, result);
@@ -268,7 +270,7 @@ int send_apdu_sam(lua_State *L, const bytestring_t *command, bytestring_t *resul
 	SW2 = SW & 0xFF;
 	
 	tmp = bytestring_to_format("%D", result);
-	log_printf(LOG_INFO, "SAM->TERM: %04X %s ", SW, tmp);
+	log_printf(LOG_INFO, "Recv: %04X %s ", SW, tmp);
 	free(tmp);
 
 	if (getResponse == 1)

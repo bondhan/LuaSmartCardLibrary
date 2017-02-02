@@ -78,7 +78,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>D:\GCC_WORK\WORKSPACE\SOURCES\ZeroBraneStudioEduPack-1.20-win32\bin</OutDir>
+    <OutDir>D:\GCC_WORK\WORKSPACE\SOURCES\ZeroBraneStudioEduPack-1.40-win32\bin</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -90,13 +90,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>DLL_EXPORT;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\GCC_WORK\WORKSPACE\SOURCES\lua-5.3.1\Lua531\Lua531\src;C:\OpenSSL-Win32\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\GCC_WORK\WORKSPACE\SOURCES\lua-5.3.1\Lua531\Lua531\src;C:\OpenSSL-Win32\include;D:\GCC_WORK\WORKSPACE\GIT\expat-code_git\expat\lib</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\GCC_WORK\WORKSPACE\SOURCES\lua-5.3.1\Lua531\Debug;C:\OpenSSL-Win32\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Lua53.lib;WinSCard.lib;libeay32.lib;ssleay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\GCC_WORK\WORKSPACE\SOURCES\lua-5.3.1\Lua531\Debug;C:\OpenSSL-Win32\lib;D:\GCC_WORK\WORKSPACE\GIT\expat-code_git\expat\win32\bin\Debug</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Lua53.lib;WinSCard.lib;libeay32.lib;ssleay32.lib;ws2_32.lib;libexpatMT.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -120,16 +120,16 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>DLL_EXPORT;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\GCC_WORK\WORKSPACE\SOURCES\lua-5.3.1\Lua531\Lua531\src;C:\OpenSSL-Win32\include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DLL_EXPORT;WIN32;NDEBUG;_CONSOLE;XML_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\GCC_WORK\WORKSPACE\SOURCES\lua-5.3.1\Lua531\Lua531\src;D:\GCC_WORK\WORKSPACE\GIT\expat-code_git\expat\lib;C:\OpenSSL-Win32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>D:\GCC_WORK\WORKSPACE\SOURCES\lua-5.3.1\Lua531\Release;C:\OpenSSL-Win32\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Lua53.lib;WinSCard.lib;libeay32.lib;ssleay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\GCC_WORK\WORKSPACE\SOURCES\lua-5.3.1\Lua531\Release;C:\OpenSSL-Win32\lib;D:\GCC_WORK\WORKSPACE\GIT\expat-code_git\expat\win32\bin\Release</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Lua53.lib;WinSCard.lib;libeay32.lib;ssleay32.lib;ws2_32.lib;libexpatMT.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>D:\GCC_WORK\WORKSPACE\SOURCES\ZeroBraneStudioEduPack-1.20-win32\bin\LuaSmartCardLibrary.dll</OutputFile>
     </Link>
   </ItemDefinitionGroup>
@@ -152,12 +152,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="asn1.c" />
+    <ClCompile Include="auxiliar.c" />
     <ClCompile Include="a_string.c" />
+    <ClCompile Include="buffer.c" />
     <ClCompile Include="bytestring.c" />
+    <ClCompile Include="compat.c" />
     <ClCompile Include="crypto.c" />
+    <ClCompile Include="except.c" />
+    <ClCompile Include="inet.c" />
+    <ClCompile Include="io.c" />
     <ClCompile Include="iso7816.c" />
     <ClCompile Include="log_util.c" />
     <ClCompile Include="ls_odbc.c" />
+    <ClCompile Include="luasocket.c" />
     <ClCompile Include="luasql.c" />
     <ClCompile Include="lua_asn1.c" />
     <ClCompile Include="lua_bit.c" />
@@ -166,16 +173,31 @@
     <ClCompile Include="lua_log.c" />
     <ClCompile Include="Lua_SmartCardPCSC.c" />
     <ClCompile Include="Lua_SmartCardSAM.c" />
+    <ClCompile Include="lxplib.c" />
+    <ClCompile Include="mime.c" />
+    <ClCompile Include="options.c" />
     <ClCompile Include="PCSCWRAP.C" />
+    <ClCompile Include="select.c" />
+    <ClCompile Include="tcp.c" />
+    <ClCompile Include="timeout.c" />
+    <ClCompile Include="udp.c" />
     <ClCompile Include="utils.c" />
+    <ClCompile Include="wsocket.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="asn1.h" />
+    <ClInclude Include="auxiliar.h" />
     <ClInclude Include="a_string.h" />
+    <ClInclude Include="buffer.h" />
     <ClInclude Include="bytestring.h" />
+    <ClInclude Include="compat.h" />
     <ClInclude Include="crypto.h" />
+    <ClInclude Include="except.h" />
+    <ClInclude Include="inet.h" />
+    <ClInclude Include="io.h" />
     <ClInclude Include="iso7816.h" />
     <ClInclude Include="log_util.h" />
+    <ClInclude Include="luasocket.h" />
     <ClInclude Include="luasql.h" />
     <ClInclude Include="lua_asn1.h" />
     <ClInclude Include="lua_bit.h" />
@@ -184,9 +206,19 @@
     <ClInclude Include="lua_log.h" />
     <ClInclude Include="Lua_SmartCardPCSC.h" />
     <ClInclude Include="Lua_SmartCardSAM.h" />
+    <ClInclude Include="lxplib.h" />
+    <ClInclude Include="mime.h" />
+    <ClInclude Include="options.h" />
     <ClInclude Include="PCSCWRAP.H" />
+    <ClInclude Include="pierror.h" />
+    <ClInclude Include="select.h" />
+    <ClInclude Include="socket.h" />
+    <ClInclude Include="tcp.h" />
+    <ClInclude Include="timeout.h" />
     <ClInclude Include="TMP_CONF.h" />
+    <ClInclude Include="udp.h" />
     <ClInclude Include="utils.h" />
+    <ClInclude Include="wsocket.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

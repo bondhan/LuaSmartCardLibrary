@@ -15,7 +15,7 @@ extern "C" {
 
 typedef void(*logfunc_t)(int, const char*);
 
-void log_open_file(char *filename, char* msg, int DEBUG_LEVEL);
+void log_open_file(char *filename);
 void log_close_file(void);
 void logstring_default(int level, const char *str);
 int log_printf(int level, const char *format, ...);

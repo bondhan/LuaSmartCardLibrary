@@ -15,15 +15,12 @@ const char ANSI_WHITE[] = "";
 
 FILE* LOGFILE = NULL;
 logfunc_t LOGFUNCTION = logstring_default;
-static unsigned logpos = 0;
-static int DEBUG_LEVEL = 5; //all
+unsigned logpos = 0;
 
-void log_open_file(char *filename, char* msg, int debug_lvl)
+void log_open_file(char *filename, char* msg)
 {
 	time_t now = time(NULL);
 	memset(msg, 0, 512);
-
-	DEBUG_LEVEL = debug_lvl;
 
 	if (filename == NULL)
 		LOGFILE = fopen(LOG_FILE_NAME, "a+");
@@ -57,15 +54,14 @@ void log_close_file(void)
 
 void logstring_default(int level, const char *str)
 {
-	if(level == LOG_DEBUG && DEBUG_LEVEL > 3)
+	if (level == LOG_DEBUG)
 		fprintf(stderr, "%s", str);
-	if (level == LOG_INFO && DEBUG_LEVEL > 2)
+	if (level == LOG_INFO)
 		fprintf(stderr, "%s%s", ANSI_GREEN, str);
-	if (level == LOG_WARNING && DEBUG_LEVEL > 1)
+	if (level == LOG_WARNING)
 		fprintf(stderr, "%s%s", ANSI_MAGENTA, str);
-	if (level == LOG_ERROR && DEBUG_LEVEL > 0)
+	if (level == LOG_ERROR)
 		fprintf(stderr, "%s%s", ANSI_RED, str);
-
 	fprintf(stderr, "%s", ANSI_RESET);
 }
 
@@ -79,27 +75,19 @@ int log_printf(int level, const char *format, ...)
 	len_buf = vsnprintf(buf, 0, format, al);
 	va_end(al);
 	buf = (char *)malloc(len_buf + 24);
-
-	if (level == LOG_DEBUG && DEBUG_LEVEL > 3) // above 4
+	if (level == LOG_DEBUG)
 		sprintf(buf, "%04i DEBUG   ", logpos++);
-	else if (level == LOG_INFO && DEBUG_LEVEL > 2) // above 3
+	else if (level == LOG_INFO)
 		sprintf(buf, "%04i INFO    ", logpos++);
-	else if (level == LOG_WARNING && DEBUG_LEVEL > 1) // above 2
+	else if (level == LOG_WARNING)
 		sprintf(buf, "%04i WARNING ", logpos++);
-	else if (level == LOG_ERROR && DEBUG_LEVEL >= 0)  // 0 or 1 or above
+	else if (level == LOG_ERROR)
 		sprintf(buf, "%04i ERROR   ", logpos++);
-	else
-	{
-		free(buf);
-		return 0;
-	}
 
 	va_start(al, format);
 	vsprintf(buf + strlen(buf), format, al);
 	va_end(al);
-
 	strcat(buf, "\n");
-
 	if (LOGFUNCTION)
 		LOGFUNCTION(level, buf);
 	if (LOGFILE)
