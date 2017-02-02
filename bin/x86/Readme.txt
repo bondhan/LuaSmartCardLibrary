@@ -1,1 +1,0 @@
-Compiled using VS 2015 community edition
